@@ -423,3 +423,6 @@ textarea {
 /* =============
     Footer
 ============= */
+#cerise-logo {
+  visibility: hidden;
+}
