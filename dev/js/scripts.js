@@ -29,7 +29,7 @@ function cherryBranch(){
     .to("#leaf", {duration:1, y:-500}, "animate+=8")
     .to("#cherrybranch", {duration:1, y:125, rotate: 25, transformOrigin: "bottom center", ease: "bounce.out"}, "animate+=8")
     .to("#cherrybranch", {duration:1, rotate: -100, transformOrigin: "bottom center", ease: "back.out(1.8)"}, "animate+=8.5")
-    .to("#cherrybranch", {duration:1, rotate: 0, transformOrigin: "bottom center", ease: "back.out(1.8)"}, "animate+=8.5")
+    .to("#cherrybranch", {duration:1, rotate: 0, transformOrigin: "bottom center", ease: "back.out(3)"}, "animate+=8.5")
     // .to("#cerise-logo", {visibility: "visible"})
     // .to("#cherrystem", {duration:1, morphSVG: "#stem"})
 
