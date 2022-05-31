@@ -423,6 +423,10 @@ textarea {
 /* =============
     Footer
 ============= */
-#cerise-logo {
+#cherisename {
+  visibility: hidden;
+}
+
+#icecreamname {
   visibility: hidden;
 }
