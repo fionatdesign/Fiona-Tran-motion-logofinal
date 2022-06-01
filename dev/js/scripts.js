@@ -41,7 +41,6 @@ function cherryBranch(){
     .to("#cherrybranch", {duration:1, rotate: -100, transformOrigin: "bottom center", ease: "back.out(1.8)"}, "animate+=8.5")
     .to("#cherrybranch", {duration:1, rotate: 0, transformOrigin: "bottom center", x:10, ease: "back.out(3)"}, "animate+=8.5")
     .to("#cherrystem", {duration:1, rotate: 30, x:-10, transformOrigin: "bottom", ease: "back.out(3)"}, "animate+=8.5")
-    // .to("#cerise-logo", {visibility: "visible"})
 
     return tl;
     
@@ -50,10 +49,16 @@ function cherryBranch(){
 function buildCherry(){
     let tl = gsap.timeline();
 
-    tl.from("#leftleg1", {visibility: "visible", duration: 1, delay: 0, fill: "#FCF3E3", drawSVG: 0})
-    
-    // .fromTo("#leftleg", {visibility: "hidden", duration: 1, y: 5, drawSVG: "10% 10%"} , {visibility: "visible", x:-20, duration: 1, drawSVG: "0% 100%"})
-    // .to("#rightleg", {visibility: "visible", x:-10, y: 10,  duration: 1, drawSVG: 0})
+    tl.from("#leftleg1", {visibility: "visible", duration: 1, delay: 0, fill: "#FCF3E3", drawSVG: 0}, "shoe")
+    .from("#rightleg1", {visibility: "visible", duration: 1, delay: 0, fill: "#FCF3E3", drawSVG: 0}, "shoe")
+    .from("#leftarm1", {visibility: "visible", duration: 2, delay: 0, fill: "#FCF3E3", drawSVG: 0}, "shoe+=1")
+    .to("#rightarm1", {x:5, delay: 0}, "shoe+=1")
+    .from("#rightarm1", {visibility: "visible", duration: 2, delay: 0, fill: "#FCF3E3", drawSVG: 0}, "shoe+=1")
+    .to("#eye", {y:5, delay: 0}, "shoe+=1")
+    .from("#eye", {duration:1, drawSVG: 0})
+    .fromTo("#eye1", {opacity:0, y:5, duration: 0.5}, {y:5, duration: 3, opacity: 100})
+    .to("#smile", {y:5, delay: 0}, "shoe+=2")
+    .from("#smile", {duration:1, drawSVG: 0})
     
     return tl;
 }
