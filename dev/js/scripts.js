@@ -10,7 +10,7 @@ import { CustomWiggle } from "gsap/CustomWiggle";
 gsap.registerPlugin(GSDevTools);
 gsap.registerPlugin(DrawSVGPlugin, MorphSVGPlugin);
 gsap.registerPlugin(MotionPathPlugin, CustomBounce, CustomWiggle);
-MorphSVGPlugin.convertToPath("#branch", "#leaf", "cherrybody1", "cherrybody2", "#leftleg", "#rightleg");
+MorphSVGPlugin.convertToPath("#branch", "#leaf", "cherrybody1", "cherrybody2", "#leftleg", "#rightleg", "#cherisename", "#icecreamname");
 
 
 const mainTL = gsap.timeline({id: "mainTL"});
@@ -88,15 +88,15 @@ function cherryArm(){
 function cherryFace(){
     let tl = gsap.timeline();
 
-    tl.to("#eye", {y:5, delay: 0}, "shoe+=1")
-    .from("#eye", {duration:1, drawSVG: 0})
-    .fromTo("#eye1", {opacity:0, y:5, duration: 0.5}, {y:5, duration: 3, ease: "power1.in", opacity: 100})
-    .to("#smile", {y:5, delay: 0})
-    .from("#smile", {duration:1, fill: "none", drawSVG: 0})
-    .from("#cheek", {duration: 1, opacity: 0, ease: "none", drawSVG: 0})
-    .to("#cheek", {duration:1, fill: "#fff"})
-    .from("#cherryshine", {duration: 1, opacity: 0, ease: "none", drawSVG: 0})
-    .to("#cherryshine", {duration:1, fill: "#fff"})
+    tl.to("#eye", {y:5, delay: 0})
+    .from("#eye", {duration: 0.75, drawSVG: 0})
+    .fromTo("#eye1", {opacity:0, y:5, duration: 0.5}, {y:5, duration: 3, ease: "power1.in", opacity: 100}, "face")
+    .to("#smile", {y:5, delay: 0}, "face")
+    .from("#smile", {duration:0.5, fill: "none", drawSVG: 0}, "face")
+    .from("#cheek", {duration: 0.5 , opacity: 0, ease: "none", drawSVG: 0}, "face+=0.75")
+    .to("#cheek", {duration:0.25, fill: "#fff"}, "face+=0.75")
+    .from("#cherryshine", {duration: 1, opacity: 0, ease: "none", drawSVG: 0}, "face+=1.5")
+    .to("#cherryshine", {duration:1, fill: "#fff"}, "face+=1.5")
 
     return tl;
 }
@@ -105,17 +105,28 @@ function cherryFace(){
 function icecreamMotion(){
     let tl = gsap.timeline();
 
-    tl.to("#leftmotion", {duration:1, yoyo: true, rotate: 30, repeat: 2, transformOrigin: "bottom"})
-    .to("#icecream", {duration: 1, rotate: 360, motionPath: {path: "#icecream-path", align: "#icecream-path", alignOrigin: [0.5 , 0.3]}})
+    tl.to("#leftmotion", {duration:1, yoyo: true, rotate: 15, ease: "back.out", transformOrigin: "200px 100px"}, "smile")
+    .to("#leftmotion", {duration:1, rotate: 0, ease: "back.out"}, "smile+=1")
+    .to("#icecream", {duration: 1, rotate: 360, motionPath: {path: "#icecream-path", align: "self", alignOrigin: [0.5 , 0.3], start: 0, end: 0.99}}, "smile+=0.4")
+    .fromTo(".cherry", {duration: 0.5, rotate:3, yoyo: true, ease: "back.out(2)"}, {duration: 0.5, rotate:0, yoyo: true, ease: "back.out(2)"}, "smile+=1")
+    .to(".righteye", {duration: 0.25, fill: "none", shapeIndex: 6, morphSVG: "#wink"}, "smile+=1.5")
+    .to("#smile", {duration:0.25, morphSVG: "#mouthopen"}, "smile+=1.5")
 
     return tl;
 }
 
-function cherryWink(){
+function logoName(){
     let tl = gsap.timeline();
 
-    tl.to("#smile", {duration:1, morphSVG: "#mouthopen"})
-    .to(".righteye", {duration: 1, fill: "none", morphSVG: "#wink"})
+    tl.from("#c", {duration: 0.5, drawSVG: 0}, "cherise")
+    .from("#heri", {duration: 0.5, delay: 0, drawSVG: "100% 100%"}, "cherise")
+    .from("#s", {duration: 0.5, drawSVG: 0}, "cherise")
+    .from("#e", {duration: 0.5, drawSVG: 0}, "cherise")
+    .from("#apostrophe", {duration: 0.5, drawSVG: 0}, "cherise")
+    .from("#second-s", {duration: 0.5, drawSVG: 0}, "cherise")
+    .from("#icecreamname", {duration: 0.5, drawSVG: 0})
+    .from(".dot", {opacity: 0, delay: 1, ease: "power3.out", duration: 0.5})
+    
 
     return tl;
 }
@@ -128,7 +139,8 @@ mainTL
 .add(cherryArm())
 .add(cherryFace())
 .add(icecreamMotion())
-.add(cherryWink())
+.add(logoName())
+
 
 
 
