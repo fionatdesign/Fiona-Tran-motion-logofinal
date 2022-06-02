@@ -111,6 +111,15 @@ function icecreamMotion(){
     return tl;
 }
 
+function cherryWink(){
+    let tl = gsap.timeline();
+
+    tl.to("#smile", {duration:1, morphSVG: "#mouthopen"})
+    .to(".righteye", {duration: 1, fill: "none", morphSVG: "#wink"})
+
+    return tl;
+}
+
 
 mainTL
 .add(cherryBranch())
@@ -119,6 +128,7 @@ mainTL
 .add(cherryArm())
 .add(cherryFace())
 .add(icecreamMotion())
+.add(cherryWink())
 
 
 
