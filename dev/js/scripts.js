@@ -1,30 +1,19 @@
 import { gsap } from "gsap";
 
-import { CustomEase } from "gsap/CustomEase";
 import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
 import { MorphSVGPlugin } from "gsap/MorphSVGPlugin";
 import { GSDevTools } from "gsap/GSDevTools";
-import { MotionPathHelper } from "gsap/MotionPathHelper";
+import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 import { CustomBounce } from "gsap/CustomBounce";
 import { CustomWiggle } from "gsap/CustomWiggle";
 
 gsap.registerPlugin(GSDevTools);
 gsap.registerPlugin(DrawSVGPlugin, MorphSVGPlugin);
-gsap.registerPlugin(CustomEase, MotionPathHelper, CustomBounce, CustomWiggle);
+gsap.registerPlugin(MotionPathPlugin, CustomBounce, CustomWiggle);
 MorphSVGPlugin.convertToPath("#branch", "#leaf", "cherrybody1", "cherrybody2", "#leftleg", "#rightleg");
 
 
 const mainTL = gsap.timeline({id: "mainTL"});
-
-
-// function hideCherry(){
-//     let tl = gsap.timeline();
-
-//     tl.to("#wink", {visibility: "hidden"})
-//     .to("#mouthopen", {visibility: "hidden"})
-    
-//     return tl;
-// }
 
 
 // function buildCherry(){
@@ -113,13 +102,26 @@ function cherryFace(){
 }
 
 
+function icecreamMotion(){
+    let tl = gsap.timeline();
+
+    tl.to("#leftmotion", {duration:1, yoyo: true, rotate: 30, repeat: 2, transformOrigin: "bottom"})
+    .to("#icecream", {duration: 1, rotate: 360, motionPath: {path: "#icecream-path", align: "#icecream-path", alignOrigin: [0.5 , 0.3]}})
+
+    return tl;
+}
+
+
 mainTL
-// .add(hideCherry())
 .add(cherryBranch())
 // .add(buildCherry({visibility:"visible"}))
 .add(cherryLeg())
 .add(cherryArm())
 .add(cherryFace())
+.add(icecreamMotion())
+
+
+
 ; 
 
 GSDevTools.create();
