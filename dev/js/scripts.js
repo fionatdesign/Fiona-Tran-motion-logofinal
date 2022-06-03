@@ -2,10 +2,9 @@ import { gsap } from "gsap";
 
 import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
 import { MorphSVGPlugin } from "gsap/MorphSVGPlugin";
-import { GSDevTools } from "gsap/GSDevTools";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 
-gsap.registerPlugin(DrawSVGPlugin, MorphSVGPlugin, GSDevTools, MotionPathPlugin);
+gsap.registerPlugin(DrawSVGPlugin, MorphSVGPlugin, MotionPathPlugin);
 MorphSVGPlugin.convertToPath("#branch", "#leaf", "cherrybody1", "cherrybody2", "#leftleg", "#rightleg", "#cherisename", "#icecreamname");
 
 
@@ -113,9 +112,5 @@ mainTL
 .add(icecreamMotion(), "animate+=1")
 .add(logoName())
 
-
-
-
 ; 
 
-// GSDevTools.create();
